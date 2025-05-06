@@ -30,14 +30,18 @@ if not pdf_path:
     print("No file selected. Exiting.")
     exit(1)
 
-# Read PDF
+# Read all pages from PDF
 reader = PdfReader(pdf_path)
 if len(reader.pages) == 0:
     print("Error: PDF file is empty.")
     exit(1)
 
-page = reader.pages[0]
-text_from_pdf = page.extract_text()
+# Extract text from all pages
+text_from_pdf = ""
+for page in reader.pages:
+    text_from_pdf += page.extract_text() + "\n\n"
+
+print(f"Successfully extracted text from {len(reader.pages)} pages.")
 
 # Gemini prompt
 input2Gemini = (
