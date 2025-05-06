@@ -1,67 +1,85 @@
+# Dobby ✍️📄
 
-# Dobby: Digital Assignment Automator
+**Dobby** is your personal Digital Assignment Assistant. It reads your assignment from a PDF, solves it using Google's Gemini AI and exports the solution as both a DOCX file and a **realistic handwritten-style PDF**. Great for students looking to save time without sacrificing presentation.
 
-**Dobby** is a Python-based tool that automates the process of solving digital assignments. It integrates with Google’s Gemini API to process PDF assignments, extracts content, and generates answers with personalized details (name and registration number). The results are saved into a DOCX file.
+---
 
-## Features
+## 🔧 Features
 
-- Upload your Digital Assignment (DA) PDF.
-- Automatically process and solve your assignment using the Gemini API.
-- Generate a DOCX file with the solution.
+- 📥 Selects and reads questions from your assignment PDF.
+- 🤖 Automatically solves the questions using **Gemini (Google GenAI)**.
+- 📄 Generates a `.docx` with clean, editable answers.
+- ✍️ Outputs a **handwritten-style PDF** using a handwriting font.
+- 🧑‍🎓 Adds your name and registration number on each page.
 
-## Requirements
+---
 
-- Python 3.9+  
-- `google-genai`  
-- `docx`  
-- `PyPDF2`  
-- `tkinter` (for file dialog)  
+## 🛠️ Installation
 
-## Installation
+### 1. Clone the repository
 
-1. **Clone the repository:**
+```bash
+git clone https://github.com/yourusername/dobby.git
+cd dobby
+```
 
-   ```bash
-   git clone https://github.com/StrongCapybara/Dobby.git
-   cd Dobby
-   ```
+### 2. Install dependencies
 
-2. **Install dependencies:**
+```bash
+pip install -r requirements.txt
+```
 
-   Install the required libraries using the `requirements.txt` file:
+### 3. Get the handwriting font
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+Dobby uses the **Patrick Hand** font to simulate handwriting.
 
-3. **Set up your API key:**
+#### Option 1: Download manually
 
-   To use the Gemini API, you will need an API key from Google Cloud.
+- Download `PatrickHand-Regular.ttf` from Google Fonts:
+  👉 https://fonts.google.com/specimen/Patrick+Hand
+- Click **"Download family"**.
+- Extract the `.zip`, and copy `PatrickHand-Regular.ttf` to the root folder of this project.
 
-   - Go to [Google Cloud Console](https://console.cloud.google.com/).
-   - Create a new project (or select an existing project).
-   - Navigate to **API & Services > Credentials**.
-   - Create an **API key**.
-   - Store your API key securely and update the `apikey.py` file with your key.
+#### Option 2: Use curl (Linux/macOS)
 
-   Example:
-   ```python
-   APIKEY = "YOUR_API_KEY"
-   ```
+```bash
+curl -o PatrickHand-Regular.ttf https://github.com/google/fonts/raw/main/ofl/patrickhand/PatrickHand-Regular.ttf
+```
 
-## Usage
+---
 
-1. Run the script:
+### 4. Add your Gemini API key
 
-   ```bash
-   python main.py
-   ```
+Create a file named `apikey.py` in the root directory with the following content:
 
-2. The script will prompt you to enter your **name** and **registration number**.
-3. A file dialog will open for you to select your **Digital Assignment PDF**.
-4. The tool will communicate with Gemini API, process the assignment, and generate a solution.
-5. The solution will be saved in a DOCX file with your name and registration number as the filename.
+```python
+APIKEY = "your_gemini_api_key_here"
+```
 
-## Example Output
+---
 
-The generated DOCX file will contain the processed assignment with your name and registration number on top, followed by the solved content.
+## 🚀 Usage
+
+```bash
+python main.py
+```
+
+1. Enter your **name** and **registration number**.
+2. Select your **assignment PDF**.
+3. Get:
+   - `YourName_YourRegNo_DA.docx` – solved answers.
+   - `YourName_YourRegNo_DA_Handwritten.pdf` – handwritten-style version.
+
+---
+
+## 🧠 Notes
+
+- All pages of the input PDF are processed.
+- Requires an active internet connection for Gemini API.
+- Ensure your font file (`PatrickHand-Regular.ttf`) is present in the project directory.
+
+---
+
+## 📜 License
+
+MIT License
